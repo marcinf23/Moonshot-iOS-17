@@ -23,9 +23,6 @@ struct ContentView: View {
                     ListLayout(astronauts: astronauts, missions: missions)
                 }
             }
-            .navigationTitle("Moonshot")
-            .background(.darkBackground)
-            .preferredColorScheme(.dark)
             .toolbar {
                 Button {
                     showingGrid.toggle()
@@ -36,6 +33,12 @@ struct ContentView: View {
                         Label("Show as grid", systemImage: "square.grid.2x2")
                     }
                 }
+            }
+            .navigationTitle("Moonshot")
+            .background(.darkBackground)
+            .preferredColorScheme(.dark)
+            .navigationDestination(for: Mission.self) { mission in
+                MissionView(mission: mission, astronauts: astronauts)
             }
         }
     }
